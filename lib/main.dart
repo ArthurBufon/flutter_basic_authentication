@@ -36,7 +36,9 @@ class _LoginState extends State<Login> {
 
   bool _passwordVisible = false;
 
+  @override
   void initState() {
+    super.initState();
     _passwordVisible = false;
   }
 
@@ -112,7 +114,8 @@ class _LoginState extends State<Login> {
                               email: emailController.text,
                             ),
                           ),
-                        );
+                        ).then((_) => _formKey.currentState!.reset());
+                        
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
