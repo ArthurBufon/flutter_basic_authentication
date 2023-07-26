@@ -64,19 +64,19 @@ class _LoginState extends State<Login> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: "Email"),
                 validator: (value) {
-                    const pattern =
-                        r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
-                        r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
-                        r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
-                        r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
-                        r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
-                        r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
-                        r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
-                    final regex = RegExp(pattern);
+                  const pattern =
+                      r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
+                      r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
+                      r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
+                      r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
+                      r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
+                      r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
+                      r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
+                  final regex = RegExp(pattern);
 
-                    return value!.isNotEmpty && !regex.hasMatch(value)
-                        ? 'Enter a valid email address'
-                        : null;
+                  return value!.isNotEmpty && !regex.hasMatch(value)
+                      ? 'Enter a valid email address'
+                      : null;
                 },
               ),
             ),
@@ -103,13 +103,14 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 validator: (value) {
-                  RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{3,}$');
+                  RegExp regex = RegExp(
+                      r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{3,}$');
                   if (value == null || value.isEmpty) {
                     return 'Please enter you password!';
-                  }else{
-                    if(!regex.hasMatch(value)){
+                  } else {
+                    if (!regex.hasMatch(value)) {
                       return 'Enter valid password';
-                    }else{
+                    } else {
                       return null;
                     }
                   }
@@ -122,7 +123,8 @@ class _LoginState extends State<Login> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      if ((emailController.text == 'arthurbufon2052@gmail.com') &&
+                      if ((emailController.text ==
+                              'arthurbufon2052@gmail.com') &&
                           (passwordController.text == 'a!1')) {
                         Navigator.push(
                           context,
@@ -147,9 +149,24 @@ class _LoginState extends State<Login> {
                       );
                     }
                   },
-                  child: const Text('Submit'),
+                  child: const Text('Login'),
                 ),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: Center(
+                  child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignUp(),
+                    ),
+                  );
+                },
+                child: const Text('Sign up'),
+              )),
             )
           ],
         ),
@@ -184,4 +201,15 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+
+  @override
+  State<SignUp> createState() => _SignUpState
+}
+
+class _SignUpState extends State<SignUp>{
+
 }
