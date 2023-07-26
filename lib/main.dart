@@ -103,10 +103,16 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 validator: (value) {
+                  RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{3,}$');
                   if (value == null || value.isEmpty) {
                     return 'Please enter you password!';
+                  }else{
+                    if(!regex.hasMatch(value)){
+                      return 'Enter valid password';
+                    }else{
+                      return null;
+                    }
                   }
-                  return null;
                 },
               ),
             ),
@@ -117,7 +123,7 @@ class _LoginState extends State<Login> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       if ((emailController.text == 'arthurbufon2052@gmail.com') &&
-                          (passwordController.text == 'admin123')) {
+                          (passwordController.text == 'a!1')) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
