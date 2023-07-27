@@ -153,21 +153,6 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: Center(
-                  child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignUp(),
-                    ),
-                  );
-                },
-                child: const Text('Sign up'),
-              )),
-            )
           ],
         ),
       ),
@@ -201,15 +186,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
-
-  @override
-  State<SignUp> createState() => _SignUpState
-}
-
-class _SignUpState extends State<SignUp>{
-
 }
