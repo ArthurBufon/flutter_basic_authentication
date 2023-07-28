@@ -60,6 +60,22 @@ class _LoginState extends State<Login> {
                 horizontal: 8,
                 vertical: 16,
               ),
+              child: FutureBuilder<FirebaseUser>(
+                  future: FirebaseAuth.instance.currentUser(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<FirebaseUser> snapshot) {
+                    if (snapshot.hasData) {
+                      FirebaseUser user = snapshot.data!; // this is your user instance
+                      return const Text('Logged in');
+                    }
+                    return const Text('Not logged in');
+                  }),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 16,
+              ),
               child: TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(
